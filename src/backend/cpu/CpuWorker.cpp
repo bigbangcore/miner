@@ -165,18 +165,16 @@ template <size_t N> void xmrig::CpuWorker<N>::start() {
     }
 
     uint32_t time_old = 0;
-
     while (!Nonce::isOutdated(Nonce::CPU, m_job.sequence())) {
       if ((m_count & 0x7) == 0) {
         storeStats();
       }
 
       const Job &job = m_job.currentJob();
-      /*uint32_t time =
+      uint32_t time =
           (uint32_t)std::chrono::duration_cast<std::chrono::seconds>(
-              std::chrono::system_clock::now().time_since_epoch())
-              .count();*/
-        uint32_t time = *job.time();
+           std::chrono::system_clock::now().time_since_epoch())
+          .count();
       if (time != time_old) {
 #define REMOTE_TIME
 #ifndef REMOTE_TIME
@@ -184,7 +182,7 @@ template <size_t N> void xmrig::CpuWorker<N>::start() {
 #else
         m_job.nextTime();
 #endif
-        time_old = time;
+        time_old = time;        
       }
 
       if (job.algorithm().l3() != m_algorithm.l3()) {
@@ -202,12 +200,12 @@ template <size_t N> void xmrig::CpuWorker<N>::start() {
       }
 
       for (size_t i = 0; i < N; ++i) {
-        if (*reinterpret_cast<uint64_t *>(m_hash + (i * 32) + 24) <
-            job.target()) {
-            /*uint32_t time =
-              (uint32_t)std::chrono::duration_cast<std::chrono::seconds>(
-                  std::chrono::system_clock::now().time_since_epoch())
-                  .count();*/
+        if (*reinterpret_cast<uint64_t *>(m_hash + (i * 32) + 24) < job.target()) {
+          /*uint32_t timeB =
+            (uint32_t)std::chrono::duration_cast<std::chrono::seconds>(
+             std::chrono::system_clock::now().time_since_epoch())
+             .count();*/
+ 
           JobResults::submit(
               //JobResult(job, *m_job.nonce(i), time, m_hash + (i * 32)));
               JobResult(job, *m_job.nonce(i), *m_job.time(i), m_hash + (i * 32)));
