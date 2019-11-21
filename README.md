@@ -16,17 +16,16 @@ XMRig is a high performance RandomX and CryptoNight CPU miner, with official sup
 #### Table of contents
 * [Download](#download)
 * [Usage](#usage)
-* [Build](https://github.com/xmrig/xmrig/wiki/Build)
-* [Donations](#donations)
 * [Contacts](#contacts)
 
 ## Download
-* Binary releases: https://github.com/xmrig/xmrig/releases
-* Git tree: https://github.com/xmrig/xmrig.git
-  * Clone with `git clone https://github.com/xmrig/xmrig.git` :hammer: [Build instructions](https://github.com/xmrig/xmrig/wiki/Build).
+* Binary releases: https://github.com/bigbangcore/miner/releases
+* Git tree: https://github.com/bigbangcore/miner.git 
+  * Clone with `git clone https://github.com/bigbangcore/miner.git`
+  
 
 ## Usage
-The preferred way to configure the miner is the [JSON config file](src/config.json) as it is more flexible and human friendly. The command line interface does not cover all features, such as mining profiles for different algorithms. Important options can be changed during runtime without miner restart by editing the config file or executing API calls.
+The preferred way to configure the miner is the [JSON config file](config.json) as it is more flexible and human friendly. The command line interface does not cover all features, such as mining profiles for different algorithms. Important options can be changed during runtime without miner restart by editing the config file or executing API calls.
 
 ### Options
 ```
@@ -77,6 +76,21 @@ The preferred way to configure the miner is the [JSON config file](src/config.js
   -h, --help                    display this help and exit
   -V, --version                 output version information and exit
 ```
+
+## Start
+
+```
+Change your config file to fit your require,then:
+cd build
+./xmrig -c ../config.json
+```
+
+## Mining Guide
+If you just want to participate in PoW mining by connect to the pool, [click here](https://github.com/bigbangcore/BigBang/wiki/Mining-Guide) to view the document.
+
+**address:** https://github.com/bigbangcore/BigBang/wiki/Mining-Guide
+
+
 
 ## Contacts
 * support@xmrig.com
