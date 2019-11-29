@@ -47,12 +47,10 @@ const static char *default_config =
     "pools": [
         {
             "algo": "cn/bbc",
-            "url1": "18.139.37.48:3333",
-            "url2": "106.14.238.184:12812",
-            "url": "127.0.0.1:3333",
-            "user": "1jtacnnqtrmm6g7n0tphyjrqp0rkapvr49m2qwhx8kt6x8c83mh2c19ds",
+            "url": "http://bbc01.bbcpool.io:3333",
+            "user": "1dtxf4e89n52eyttgnwhrjwgesez3edk8k9gfcjfq94yas0qb4j67vqz7",
             "pass": "x",
-            "rig-id": "chasanbu",
+            "rig-id": "chawubu",
             "nicehash": true,
             "keepalive": true,
             "enabled": true,
