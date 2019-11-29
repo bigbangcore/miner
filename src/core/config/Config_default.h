@@ -47,7 +47,7 @@ const static char *default_config =
     "pools": [
         {
             "algo": "cn/bbc",
-            "url": "http://bbc01.bbcpool.io:3333",
+            "url": "bbc01.bbcpool.io:3333",
             "user": "1dtxf4e89n52eyttgnwhrjwgesez3edk8k9gfcjfq94yas0qb4j67vqz7",
             "pass": "x",
             "rig-id": "chawubu",
