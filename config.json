@@ -14,8 +14,8 @@
     "pools": [
         {
             "algo": "cn/bbc",
-            "url": "127.0.0.1:3333",
-            "user": "13n9apsn98nj5dmss94p99b3r9tkh9xth9fed56r242jye1s5cv5jp74c",
+            "url": "http://bbc01.bbcpool.io:3333",
+            "user": "1dtxf4e89n52eyttgnwhrjwgesez3edk8k9gfcjfq94yas0qb4j67vqz7",
             "pass": "x",
             "rig-id": "chawubu",
             "nicehash": true,
