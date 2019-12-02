@@ -14,7 +14,7 @@
     "pools": [
         {
             "algo": "cn/bbc",
-            "url": "bbc01.bbcpool.io:3333",
+            "urlA": "bbc.uupool.cn:12812",
             "user": "1dtxf4e89n52eyttgnwhrjwgesez3edk8k9gfcjfq94yas0qb4j67vqz7",
             "pass": "x",
             "rig-id": "chawubu",
@@ -25,7 +25,7 @@
             "tls-fingerprint": null
         }
     ],
-    "threads": 1,
+    "threads": 4,
     "api": {
         "port": 0,
         "access-token": null,

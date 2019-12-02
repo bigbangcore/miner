@@ -21,7 +21,16 @@ XMRig is a high performance RandomX and CryptoNight CPU miner, with official sup
 ## Download
 * Binary releases: https://github.com/bigbangcore/miner/releases
 * Git tree: https://github.com/bigbangcore/miner.git 
-  * Clone with `git clone https://github.com/bigbangcore/miner.git`
+* Clone with `git clone https://github.com/bigbangcore/miner.git`
+
+## Dependent
+```
+git clone https://github.com/libuv/libuv.git libuv
+$ cd libuv
+$ mkdir -p out/cmake ; cd out/cmake   # create build directory
+$ cmake ../.. -DBUILD_TESTING=ON      # generate project with test
+$ cmake --build .                     # build
+```
   
 
 ## Usage
