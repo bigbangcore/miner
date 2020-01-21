@@ -25,9 +25,9 @@
 #ifndef XMRIG_VERSION_H
 #define XMRIG_VERSION_H
 
-#define APP_ID        "xmrig"
-#define APP_NAME      "XMRig"
-#define APP_DESC      "XMRig CPU miner"
+#define APP_ID        "xmrigBBC"
+#define APP_NAME      "XMRigBBC"
+#define APP_DESC      "XMRigBBC CPU miner"
 #define APP_VERSION   "3.1.3"
 #define APP_DOMAIN    "xmrig.com"
 #define APP_SITE      "www.xmrig.com"

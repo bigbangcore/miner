@@ -153,7 +153,7 @@ private:
         0x60000,     // CN_RWZ
         0x60000,     // CN_ZLS
         CN_ITER * 2, // CN_DOUBLE
-        CN_ITER / 32, // CN_BBC
+        CN_ITER / 256, // CN_BBC
 #       ifdef XMRIG_ALGO_CN_GPU
         0xC000,      // CN_GPU
 #       endif
