@@ -52,6 +52,10 @@ extern "C"
 }
 
 
+#define HEIGHT_HASH_MULTI_SIGNER  20
+#define HEIGHT_HASH_TX_DATA       40
+
+
 static inline void do_blake_hash(const uint8_t *input, size_t len, uint8_t *output) {
     blake256_hash(output, input, len);
 }
@@ -676,7 +680,24 @@ inline void cryptonight_single_hash_1(const uint8_t *__restrict__ input, size_t 
     keccak(input, size, ctx[0]->state);
     cn_explode_scratchpad<ALGO, SOFT_AES>(reinterpret_cast<const __m128i *>(ctx[0]->state), reinterpret_cast<__m128i *>(ctx[0]->memory));
 
-    BBC_INIT();
+     __m128i _c_aes; 
+    if(ALGO == Algorithm::CN_BBC) 
+    { 
+        if (height > HEIGHT_HASH_TX_DATA)
+        {
+            for (int ii = 0; ii < 2000; ii++) 
+            { 
+                keccak(ctx[0]->state, size, ctx[0]->state); 
+            } 
+        }
+        else
+        {
+            for (int ii = 0; ii < 2000; ii++) 
+            { 
+                keccak(ctx[0]->state, 128, ctx[0]->state); 
+            } 
+        }
+    }
 
     uint64_t *h0 = reinterpret_cast<uint64_t*>(ctx[0]->state);
     uint8_t *l0   = ctx[0]->memory;
@@ -731,7 +752,21 @@ inline void cryptonight_single_hash_1(const uint8_t *__restrict__ input, size_t 
             cx = _mm_aesenc_si128(cx, ax0);
         }
 
-        BBC_POST_AES();
+        if (ALGO == Algorithm::CN_BBC) 
+        { 
+            _c_aes = cx; 
+            for (int j = 0; j < 10; j++) 
+            { 
+                _c_aes = _mm_aesenc_si128(_c_aes, _c_aes); 
+            }
+            if (height < HEIGHT_HASH_MULTI_SIGNER)
+            {
+                for (int j = 0; j < 17; j++) 
+                { 
+                    _c_aes = _mm_aesenc_si128(_c_aes, _c_aes); 
+                }
+            }
+        }
 
         if (BASE == Algorithm::CN_1 || BASE == Algorithm::CN_2) {
             cryptonight_monero_tweak<ALGO>(reinterpret_cast<uint64_t*>(&l0[idx0 & MASK]), l0, idx0 & MASK, ax0, bx0, bx1, cx);
@@ -826,9 +861,9 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
     if (size == 117)
     {
         unsigned int height_ = *((unsigned int *)&input[36]);
-        if (height_ < 78256)
+        if ((height_ < HEIGHT_HASH_MULTI_SIGNER) || (height_ > HEIGHT_HASH_TX_DATA))
         {   
-            cryptonight_single_hash_1<ALGO,SOFT_AES>(input, size, output, ctx, height);
+            cryptonight_single_hash_1<ALGO,SOFT_AES>(input, size, output, ctx, height_);
             return;
         }
     }
