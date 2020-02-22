@@ -681,20 +681,10 @@ inline void cryptonight_single_hash_1(const uint8_t *__restrict__ input, size_t 
      __m128i _c_aes; 
     if(ALGO == Algorithm::CN_BBC) 
     { 
-        if (height > HEIGHT_HASH_TX_DATA)
-        {
-            for (int ii = 0; ii < 2000; ii++) 
-            { 
-                keccak(ctx[0]->state, size, ctx[0]->state); 
-            } 
-        }
-        else
-        {
-            for (int ii = 0; ii < 2000; ii++) 
-            { 
-                keccak(ctx[0]->state, 128, ctx[0]->state); 
-            } 
-        }
+        for (int ii = 0; ii < 2000; ii++) 
+        { 
+            keccak(ctx[0]->state, 128, ctx[0]->state); 
+        } 
     }
 
     uint64_t *h0 = reinterpret_cast<uint64_t*>(ctx[0]->state);
