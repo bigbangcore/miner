@@ -43,6 +43,9 @@
 #include "crypto/common/keccak.h"
 
 
+#define HEIGHT_HASH_MULTI_SIGNER  20
+#define HEIGHT_HASH_TX_DATA       40
+
 extern "C"
 {
 #include "crypto/cn/c_groestl.h"
@@ -50,11 +53,6 @@ extern "C"
 #include "crypto/cn/c_jh.h"
 #include "crypto/cn/c_skein.h"
 }
-
-
-#define HEIGHT_HASH_MULTI_SIGNER  20
-#define HEIGHT_HASH_TX_DATA       40
-
 
 static inline void do_blake_hash(const uint8_t *input, size_t len, uint8_t *output) {
     blake256_hash(output, input, len);
