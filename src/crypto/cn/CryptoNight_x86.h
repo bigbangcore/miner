@@ -43,8 +43,12 @@
 #include "crypto/common/keccak.h"
 
 
-#define HEIGHT_HASH_MULTI_SIGNER  20
-#define HEIGHT_HASH_TX_DATA       40
+//#define HEIGHT_HASH_MULTI_SIGNER  20
+//#define HEIGHT_HASH_TX_DATA       40
+
+
+#define HEIGHT_HASH_MULTI_SIGNER  78256
+#define HEIGHT_HASH_TX_DATA       133060
 
 extern "C"
 {
