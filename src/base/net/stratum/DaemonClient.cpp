@@ -222,6 +222,7 @@ bool xmrig::DaemonClient::parseJob(const rapidjson::Value &params, int *code)
 
     job.setSeedHash(Json::getString(params, "seed_hash"));
     job.setHeight(Json::getUint64(params, kHeight));
+    job.m_AdjTimes = Json::getUint64(params, "m_AdjTimes");
     job.setDiff(Json::getUint64(params, "difficulty"));
     job.setId(blocktemplate.data() + blocktemplate.size() - 32);
 

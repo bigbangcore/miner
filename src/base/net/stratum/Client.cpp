@@ -302,6 +302,7 @@ bool xmrig::Client::parseJob(const rapidjson::Value &params, int *code) {
   }
 
   job.setHeight(Json::getUint64(params, "height"));
+  job.m_AdjTimes = Json::getUint64(params, "m_AdjTimes");
 
   if (!verifyAlgorithm(job.algorithm(), algo)) {
     *code = 6;

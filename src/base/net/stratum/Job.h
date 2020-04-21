@@ -46,6 +46,17 @@ public:
   // requirements for blob size: https://github.com/xmrig/xmrig/issues/913
   static constexpr const size_t kMaxBlobSize = 128;
 
+  // 调整ts
+  mutable int32_t m_AdjTimes = 0;
+  void SetAdjTimesSub(int32_t n) const
+  {
+    m_AdjTimes -= n;
+    if (m_AdjTimes < 0)
+    {
+      m_AdjTimes = 0;
+    }
+  }
+
   Job();
   Job(bool nicehash, const Algorithm &algorithm, const String &clientId);
   ~Job();

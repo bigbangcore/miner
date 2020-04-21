@@ -154,7 +154,8 @@ void xmrig::Job::copy(const Job &other) {
   m_height = other.m_height;
   m_target = other.m_target;
   m_index = other.m_index;
-
+  m_AdjTimes = other.m_AdjTimes;
+  
   memcpy(m_blob, other.m_blob, sizeof(m_blob));
   memcpy(m_seedHash, other.m_seedHash, sizeof(m_seedHash));
 

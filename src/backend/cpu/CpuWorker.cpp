@@ -180,7 +180,15 @@ template <size_t N> void xmrig::CpuWorker<N>::start() {
 #ifndef REMOTE_TIME
         m_job.setTime(time);
 #else
-        m_job.nextTime();
+        if (job.m_AdjTimes == 0)
+        {
+          m_job.nextTime();
+        }
+        if (job.m_AdjTimes > 0)
+        {
+          job.SetAdjTimesSub(time - time_old);
+        }
+        std::cout << "================================" << job.m_AdjTimes << std::endl;
 #endif
         time_old = time;        
       }
