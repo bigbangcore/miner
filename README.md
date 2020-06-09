@@ -11,7 +11,6 @@ XMRig is a high performance RandomX and CryptoNight CPU miner, with official sup
 
 * This is the **CPU-mining** version, there is also a [NVIDIA GPU version](https://github.com/xmrig/xmrig-nvidia) and [AMD GPU version]( https://github.com/xmrig/xmrig-amd).
 
-<img src="doc/screenshot.png" width="808" >
 
 #### Table of contents
 * [Download](#download)
